@@ -1,11 +1,14 @@
-from skill_matcher import match_skill
-from memory_loader import load_memory
+from core.skill_matcher import match_skill
+from core.memory_loader import load_memory
 
 def run(task):
-
-    memory = load_memory()
-
+    memory = load_memory(task)
     skill = match_skill(task)
 
-    print("Memory loaded:", memory)
-    print("Using skill:", skill)
+    response = f"""
+Task: {task}
+Memory: {memory}
+Selected Skill: {skill}
+"""
+
+    return response

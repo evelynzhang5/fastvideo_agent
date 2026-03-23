@@ -1,0 +1,142 @@
+[
+  {
+    "id": "f1",
+    "type": "architecture",
+    "content": "FastVideo is a modular framework that separates models (encoders, VAEs, transformers) from execution logic (pipelines and stages)",
+    "source": "cline_scan",
+    "confidence": 0.95
+  },
+  {
+    "id": "f2",
+    "type": "architecture",
+    "content": "Pipelines orchestrate execution by organizing multiple stages such as text encoding, denoising, and decoding",
+    "source": "cline_scan",
+    "confidence": 0.95
+  },
+  {
+    "id": "f3",
+    "type": "architecture",
+    "content": "ForwardBatch is the shared state object passed between pipeline stages containing inputs, intermediate states, and outputs",
+    "source": "cline_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f4",
+    "type": "repo",
+    "content": "Transformer diffusion models are implemented in fastvideo/models/dits",
+    "source": "cline_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f5",
+    "type": "repo",
+    "content": "VAE implementations are located in fastvideo/models/vaes",
+    "source": "cline_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f6",
+    "type": "repo",
+    "content": "Text and image encoders are implemented in fastvideo/models/encoders",
+    "source": "cline_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f7",
+    "type": "architecture",
+    "content": "FastVideoArgs is the central configuration system controlling model loading, inference settings, and distributed execution",
+    "source": "cline_scan",
+    "confidence": 0.95
+  },
+  {
+    "id": "f8",
+    "type": "usage",
+    "content": "Video generation is performed through the VideoGenerator API which handles model loading and pipeline execution",
+    "source": "cline_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f9",
+    "type": "architecture",
+    "content": "The denoising stage is the core computation loop that iteratively transforms noise into video frames",
+    "source": "cline_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f10",
+    "type": "architecture",
+    "content": "FastVideo supports distributed execution using multi-GPU workers coordinated by an executor system",
+    "source": "cline_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f11",
+    "type": "architecture",
+    "content": "FastVideo uses a pipeline abstraction where ComposedPipelineBase manages model loading, stage orchestration, and data flow",
+    "source": "docs",
+    "confidence": 0.95
+  },
+  {
+    "id": "f12",
+    "type": "architecture",
+    "content": "Each pipeline stage implements a forward(batch, args) interface and modifies the ForwardBatch state",
+    "source": "docs",
+    "confidence": 0.95
+  },
+  {
+    "id": "f13",
+    "type": "architecture",
+    "content": "Pipeline stages include input validation, text encoding, latent preparation, denoising, and decoding",
+    "source": "docs",
+    "confidence": 0.95
+  },
+  {
+    "id": "f14",
+    "type": "architecture",
+    "content": "Schedulers control diffusion steps and convert predicted noise into updated latent representations",
+    "source": "docs",
+    "confidence": 0.9
+  },
+  {
+    "id": "f15",
+    "type": "architecture",
+    "content": "FastVideo supports tensor parallelism and sequence parallelism for distributed model execution",
+    "source": "docs",
+    "confidence": 0.9
+  },
+  {
+    "id": "f16",
+    "type": "architecture",
+    "content": "Attention backends in FastVideo include FlashAttention, sliding tile attention, and sparse attention implementations",
+    "source": "docs",
+    "confidence": 0.9
+  },
+  {
+    "id": "f17",
+    "type": "repo",
+    "content": "Pipeline implementations are located in fastvideo/pipelines including subdirectories like basic, preprocess, and training",
+    "source": "repo_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f18",
+    "type": "repo",
+    "content": "CLI entrypoints are implemented in fastvideo/entrypoints/cli for commands like generate, serve, and benchmark",
+    "source": "repo_scan",
+    "confidence": 0.9
+  },
+  {
+    "id": "f19",
+    "type": "architecture",
+    "content": "FastVideo uses an executor-worker system where each GPU runs a worker process coordinated by a central executor",
+    "source": "docs",
+    "confidence": 0.9
+  },
+  {
+    "id": "f20",
+    "type": "architecture",
+    "content": "Platform abstraction allows FastVideo to support different hardware backends such as CUDA and other accelerators",
+    "source": "docs",
+    "confidence": 0.9
+  }
+]
