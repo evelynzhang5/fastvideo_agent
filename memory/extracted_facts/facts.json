@@ -138,5 +138,101 @@
     "content": "Platform abstraction allows FastVideo to support different hardware backends such as CUDA and other accelerators",
     "source": "docs",
     "confidence": 0.9
-  }
+  },
+  {
+  "id": "f21",
+  "type": "setup",
+  "content": "To install FastVideo from source: clone the repository and run uv pip install -e .",
+  "confidence": 0.95
+},
+{
+  "id": "f22",
+  "type": "setup",
+  "content": "Recommended setup uses uv: uv venv --python 3.12 and uv pip install fastvideo",
+  "confidence": 0.95
+},
+{
+  "id": "f23",
+  "type": "setup",
+  "content": "FastVideo requires Python 3.10–3.12 and CUDA 11.8+ for GPU setups",
+  "confidence": 0.9
+},
+{
+  "id": "f24",
+  "type": "dev",
+  "content": "Run all tests using pytest tests/ or pytest fastvideo/tests/",
+  "confidence": 0.9
+},
+{
+  "id": "f25",
+  "type": "dev",
+  "content": "Run pre-commit on all files using pre-commit run --all-files",
+  "confidence": 0.9
+},
+{
+  "id": "f26",
+  "type": "usage",
+  "content": "Use VideoGenerator.from_pretrained() to load models and generate videos",
+  "confidence": 0.95
+},
+{
+  "id": "f27",
+  "type": "usage",
+  "content": "Basic inference is done by calling generator.generate_video(prompt, ...)",
+  "confidence": 0.95
+},
+{
+  "id": "f28",
+  "type": "repo",
+  "content": "Wan pipelines are implemented in fastvideo/pipelines/basic/wan",
+  "confidence": 0.9
+},
+{
+  "id": "f29",
+  "type": "repo",
+  "content": "VideoGenerator is defined in fastvideo/entrypoints/video_generator.py",
+  "confidence": 0.9
+},
+{
+  "id": "f30",
+  "type": "workflow",
+  "content": "To run a basic inference: create a VideoGenerator with from_pretrained(), then call generator.generate_video(prompt)",
+  "confidence": 0.95
+},
+{
+  "id": "f31",
+  "type": "workflow",
+  "content": "To run the Gradio demo: navigate to examples/inference/gradio and run the serving or local demo script",
+  "confidence": 0.9
+},
+{
+  "id": "f32",
+  "type": "workflow",
+  "content": "Finetuning scripts are located in examples/training/finetune and scripts/finetune",
+  "confidence": 0.9
+},
+{
+  "id": "f33",
+  "type": "workflow",
+  "content": "Dataset preparation scripts are located in scripts/dataset_preparation and examples/dataset",
+  "confidence": 0.9
+},
+{
+  "id": "f34",
+  "type": "repo",
+  "content": "Configuration files are stored in fastvideo/configs",
+  "confidence": 0.9
+},
+{
+  "id": "f35",
+  "type": "repo",
+  "content": "Dataset loaders are implemented in fastvideo/dataset and fastvideo/dataset/dataloader",
+  "confidence": 0.9
+},
+{
+  "id": "f36",
+  "type": "architecture",
+  "content": "FastVideo uses a registry system to dynamically register models, pipelines, and components for extensibility",
+  "confidence": 0.9
+}
 ]
