@@ -2,237 +2,235 @@
   {
     "id": "f1",
     "type": "architecture",
-    "content": "FastVideo is a modular framework that separates models (encoders, VAEs, transformers) from execution logic (pipelines and stages)",
-    "source": "cline_scan",
+    "concept": "modular_design",
+    "content": "FastVideo is a modular framework that separates models (encoders, VAEs, diffusion transformers) from execution logic (pipelines and stages)",
+    "files": ["fastvideo/models/", "fastvideo/pipelines/"],
     "confidence": 0.95
   },
   {
     "id": "f2",
     "type": "architecture",
-    "content": "Pipelines orchestrate execution by organizing multiple stages such as text encoding, denoising, and decoding",
-    "source": "cline_scan",
+    "concept": "pipeline_system",
+    "content": "Pipelines orchestrate execution by organizing stages such as text encoding, latent preparation, denoising, and decoding",
+    "files": ["fastvideo/pipelines/", "fastvideo/pipelines/stages/"],
     "confidence": 0.95
   },
   {
     "id": "f3",
     "type": "architecture",
+    "concept": "pipeline_state",
     "content": "ForwardBatch is the shared state object passed between pipeline stages containing inputs, intermediate states, and outputs",
-    "source": "cline_scan",
+    "files": ["fastvideo/pipelines/stages/"],
     "confidence": 0.9
   },
   {
     "id": "f4",
-    "type": "repo",
-    "content": "Transformer diffusion models are implemented in fastvideo/models/dits",
-    "source": "cline_scan",
-    "confidence": 0.9
+    "type": "architecture",
+    "concept": "pipeline_base",
+    "content": "ComposedPipelineBase manages model loading, stage orchestration, and data flow across pipeline stages",
+    "files": ["fastvideo/pipelines/composed_pipeline_base.py"],
+    "confidence": 0.95
   },
   {
     "id": "f5",
-    "type": "repo",
-    "content": "VAE implementations are located in fastvideo/models/vaes",
-    "source": "cline_scan",
-    "confidence": 0.9
+    "type": "architecture",
+    "concept": "stage_interface",
+    "content": "Each pipeline stage implements a forward(batch, args) interface and modifies the ForwardBatch state",
+    "files": ["fastvideo/pipelines/stages/"],
+    "confidence": 0.95
   },
   {
     "id": "f6",
-    "type": "repo",
-    "content": "Text and image encoders are implemented in fastvideo/models/encoders",
-    "source": "cline_scan",
+    "type": "architecture",
+    "concept": "denoising",
+    "content": "The denoising stage is the core computation loop that iteratively transforms noise into video frames using diffusion models",
+    "files": ["fastvideo/pipelines/stages/denoising.py"],
     "confidence": 0.9
   },
   {
     "id": "f7",
     "type": "architecture",
-    "content": "FastVideoArgs is the central configuration system controlling model loading, inference settings, and distributed execution",
-    "source": "cline_scan",
-    "confidence": 0.95
+    "concept": "attention_system",
+    "content": "FastVideo supports multiple attention backends including FlashAttention, sliding attention, and sparse attention for efficiency",
+    "files": ["fastvideo/attention/", "fastvideo/attention/backends/"],
+    "confidence": 0.9
   },
   {
     "id": "f8",
-    "type": "usage",
-    "content": "Video generation is performed through the VideoGenerator API which handles model loading and pipeline execution",
-    "source": "cline_scan",
+    "type": "architecture",
+    "concept": "distributed_execution",
+    "content": "FastVideo uses an executor-worker system where each GPU runs a worker process coordinated by a central executor",
+    "files": ["fastvideo/worker/", "fastvideo/distributed/"],
     "confidence": 0.9
   },
   {
     "id": "f9",
     "type": "architecture",
-    "content": "The denoising stage is the core computation loop that iteratively transforms noise into video frames",
-    "source": "cline_scan",
-    "confidence": 0.9
+    "concept": "configuration",
+    "content": "FastVideoArgs is the central configuration system controlling model loading, inference settings, and distributed execution",
+    "files": ["fastvideo/fastvideo_args.py"],
+    "confidence": 0.95
   },
   {
     "id": "f10",
-    "type": "architecture",
-    "content": "FastVideo supports distributed execution using multi-GPU workers coordinated by an executor system",
-    "source": "cline_scan",
+    "type": "repo_structure",
+    "concept": "models",
+    "content": "Diffusion transformer models are implemented in fastvideo/models/dits",
+    "files": ["fastvideo/models/dits/"],
     "confidence": 0.9
   },
   {
     "id": "f11",
-    "type": "architecture",
-    "content": "FastVideo uses a pipeline abstraction where ComposedPipelineBase manages model loading, stage orchestration, and data flow",
-    "source": "docs",
-    "confidence": 0.95
+    "type": "repo_structure",
+    "concept": "vaes",
+    "content": "Variational Autoencoders (VAEs) are implemented in fastvideo/models/vaes",
+    "files": ["fastvideo/models/vaes/"],
+    "confidence": 0.9
   },
   {
     "id": "f12",
-    "type": "architecture",
-    "content": "Each pipeline stage implements a forward(batch, args) interface and modifies the ForwardBatch state",
-    "source": "docs",
-    "confidence": 0.95
+    "type": "repo_structure",
+    "concept": "encoders",
+    "content": "Text and image encoders are implemented in fastvideo/models/encoders",
+    "files": ["fastvideo/models/encoders/"],
+    "confidence": 0.9
   },
   {
     "id": "f13",
-    "type": "architecture",
-    "content": "Pipeline stages include input validation, text encoding, latent preparation, denoising, and decoding",
-    "source": "docs",
-    "confidence": 0.95
+    "type": "repo_structure",
+    "concept": "pipelines",
+    "content": "Pipeline implementations are located in fastvideo/pipelines including subdirectories like basic, preprocess, and training",
+    "files": ["fastvideo/pipelines/"],
+    "confidence": 0.9
   },
   {
     "id": "f14",
-    "type": "architecture",
-    "content": "Schedulers control diffusion steps and convert predicted noise into updated latent representations",
-    "source": "docs",
+    "type": "repo_structure",
+    "concept": "wan_pipeline",
+    "content": "Wan pipelines are implemented in fastvideo/pipelines/basic/wan",
+    "files": ["fastvideo/pipelines/basic/wan/"],
     "confidence": 0.9
   },
   {
     "id": "f15",
-    "type": "architecture",
-    "content": "FastVideo supports tensor parallelism and sequence parallelism for distributed model execution",
-    "source": "docs",
+    "type": "repo_structure",
+    "concept": "configs",
+    "content": "Configuration files for models and pipelines are stored in fastvideo/configs",
+    "files": ["fastvideo/configs/"],
     "confidence": 0.9
   },
   {
     "id": "f16",
-    "type": "architecture",
-    "content": "Attention backends in FastVideo include FlashAttention, sliding tile attention, and sparse attention implementations",
-    "source": "docs",
+    "type": "repo_structure",
+    "concept": "entrypoints",
+    "content": "CLI and API entrypoints are implemented in fastvideo/entrypoints including commands like generate and serve",
+    "files": ["fastvideo/entrypoints/", "fastvideo/entrypoints/cli/"],
     "confidence": 0.9
   },
   {
     "id": "f17",
-    "type": "repo",
-    "content": "Pipeline implementations are located in fastvideo/pipelines including subdirectories like basic, preprocess, and training",
-    "source": "repo_scan",
-    "confidence": 0.9
+    "type": "repo_structure",
+    "concept": "video_generator",
+    "content": "VideoGenerator is the main API for video generation and is implemented in fastvideo/entrypoints/video_generator.py",
+    "files": ["fastvideo/entrypoints/video_generator.py"],
+    "confidence": 0.95
   },
   {
     "id": "f18",
-    "type": "repo",
-    "content": "CLI entrypoints are implemented in fastvideo/entrypoints/cli for commands like generate, serve, and benchmark",
-    "source": "repo_scan",
-    "confidence": 0.9
+    "type": "usage",
+    "concept": "model_loading",
+    "content": "Use VideoGenerator.from_pretrained() to load pretrained models and initialize pipelines",
+    "files": ["fastvideo/entrypoints/video_generator.py"],
+    "example": "generator = VideoGenerator.from_pretrained('model_name')",
+    "confidence": 0.95
   },
   {
     "id": "f19",
-    "type": "architecture",
-    "content": "FastVideo uses an executor-worker system where each GPU runs a worker process coordinated by a central executor",
-    "source": "docs",
-    "confidence": 0.9
+    "type": "usage",
+    "concept": "inference",
+    "content": "Basic inference is performed by calling generator.generate_video(prompt, ...) after loading a model",
+    "files": ["fastvideo/entrypoints/video_generator.py", "examples/inference/basic/"],
+    "example": "generator.generate_video(prompt)",
+    "confidence": 0.95
   },
   {
     "id": "f20",
-    "type": "architecture",
-    "content": "Platform abstraction allows FastVideo to support different hardware backends such as CUDA and other accelerators",
-    "source": "docs",
+    "type": "workflow",
+    "concept": "inference_pipeline",
+    "content": "Inference workflow includes loading a model, preparing inputs, running denoising stages, and decoding outputs",
+    "files": ["fastvideo/pipelines/stages/", "fastvideo/entrypoints/video_generator.py"],
     "confidence": 0.9
   },
   {
-  "id": "f21",
-  "type": "setup",
-  "content": "To install FastVideo from source: clone the repository and run uv pip install -e .",
-  "confidence": 0.95
-},
-{
-  "id": "f22",
-  "type": "setup",
-  "content": "Recommended setup uses uv: uv venv --python 3.12 and uv pip install fastvideo",
-  "confidence": 0.95
-},
-{
-  "id": "f23",
-  "type": "setup",
-  "content": "FastVideo requires Python 3.10–3.12 and CUDA 11.8+ for GPU setups",
-  "confidence": 0.9
-},
-{
-  "id": "f24",
-  "type": "dev",
-  "content": "Run all tests using pytest tests/ or pytest fastvideo/tests/",
-  "confidence": 0.9
-},
-{
-  "id": "f25",
-  "type": "dev",
-  "content": "Run pre-commit on all files using pre-commit run --all-files",
-  "confidence": 0.9
-},
-{
-  "id": "f26",
-  "type": "usage",
-  "content": "Use VideoGenerator.from_pretrained() to load models and generate videos",
-  "confidence": 0.95
-},
-{
-  "id": "f27",
-  "type": "usage",
-  "content": "Basic inference is done by calling generator.generate_video(prompt, ...)",
-  "confidence": 0.95
-},
-{
-  "id": "f28",
-  "type": "repo",
-  "content": "Wan pipelines are implemented in fastvideo/pipelines/basic/wan",
-  "confidence": 0.9
-},
-{
-  "id": "f29",
-  "type": "repo",
-  "content": "VideoGenerator is defined in fastvideo/entrypoints/video_generator.py",
-  "confidence": 0.9
-},
-{
-  "id": "f30",
-  "type": "workflow",
-  "content": "To run a basic inference: create a VideoGenerator with from_pretrained(), then call generator.generate_video(prompt)",
-  "confidence": 0.95
-},
-{
-  "id": "f31",
-  "type": "workflow",
-  "content": "To run the Gradio demo: navigate to examples/inference/gradio and run the serving or local demo script",
-  "confidence": 0.9
-},
-{
-  "id": "f32",
-  "type": "workflow",
-  "content": "Finetuning scripts are located in examples/training/finetune and scripts/finetune",
-  "confidence": 0.9
-},
-{
-  "id": "f33",
-  "type": "workflow",
-  "content": "Dataset preparation scripts are located in scripts/dataset_preparation and examples/dataset",
-  "confidence": 0.9
-},
-{
-  "id": "f34",
-  "type": "repo",
-  "content": "Configuration files are stored in fastvideo/configs",
-  "confidence": 0.9
-},
-{
-  "id": "f35",
-  "type": "repo",
-  "content": "Dataset loaders are implemented in fastvideo/dataset and fastvideo/dataset/dataloader",
-  "confidence": 0.9
-},
-{
-  "id": "f36",
-  "type": "architecture",
-  "content": "FastVideo uses a registry system to dynamically register models, pipelines, and components for extensibility",
-  "confidence": 0.9
-}
+    "id": "f21",
+    "type": "setup",
+    "concept": "install_source",
+    "content": "To install FastVideo from source, clone the repository and run uv pip install -e .",
+    "files": ["README.md", "docs/getting_started/installation"],
+    "confidence": 0.95
+  },
+  {
+    "id": "f22",
+    "type": "setup",
+    "concept": "environment_setup",
+    "content": "Recommended setup uses uv virtual environments such as uv venv --python 3.12 and uv pip install fastvideo",
+    "files": ["docs/getting_started/installation"],
+    "confidence": 0.95
+  },
+  {
+    "id": "f23",
+    "type": "setup",
+    "concept": "requirements",
+    "content": "FastVideo requires Python 3.10–3.12 and CUDA 11.8+ for GPU execution",
+    "files": ["docs/getting_started/installation"],
+    "confidence": 0.9
+  },
+  {
+    "id": "f24",
+    "type": "development",
+    "concept": "testing",
+    "content": "Run all tests using pytest tests/ or pytest fastvideo/tests/",
+    "files": ["tests/", "fastvideo/tests/"],
+    "confidence": 0.9
+  },
+  {
+    "id": "f25",
+    "type": "development",
+    "concept": "precommit",
+    "content": "Run pre-commit hooks using pre-commit run --all-files before committing changes",
+    "files": [".pre-commit-config.yaml"],
+    "confidence": 0.9
+  },
+  {
+    "id": "f26",
+    "type": "workflow",
+    "concept": "gradio_demo",
+    "content": "To run the Gradio demo, navigate to examples/inference/gradio and run the serving or local demo scripts",
+    "files": ["examples/inference/gradio/"],
+    "confidence": 0.9
+  },
+  {
+    "id": "f27",
+    "type": "workflow",
+    "concept": "training",
+    "content": "Finetuning scripts are located in examples/training/finetune and scripts/finetune",
+    "files": ["examples/training/finetune/", "scripts/finetune/"],
+    "confidence": 0.9
+  },
+  {
+    "id": "f28",
+    "type": "workflow",
+    "concept": "dataset",
+    "content": "Dataset preparation scripts are located in scripts/dataset_preparation and examples/dataset",
+    "files": ["scripts/dataset_preparation/", "examples/dataset/"],
+    "confidence": 0.9
+  },
+  {
+    "id": "f29",
+    "type": "architecture",
+    "concept": "registry_system",
+    "content": "FastVideo uses a registry system to dynamically register models, pipelines, and components for extensibility",
+    "files": ["fastvideo/registry.py"],
+    "confidence": 0.9
+  }
 ]

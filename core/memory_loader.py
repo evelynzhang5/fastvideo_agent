@@ -11,12 +11,21 @@ with open("memory/extracted_facts/facts.json") as f:
 FACT_EMBEDS = model.encode([f["content"] for f in FACTS])
 
 
+from sentence_transformers import SentenceTransformer
+import numpy as np
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
 def load_memory(query):
-    query_embed = model.encode([query])[0]
+    facts = json.load(open("memory/extracted_facts/auto_facts.json"))
 
-    scores = np.dot(FACT_EMBEDS, query_embed)
+    texts = [f["content"] for f in facts]
 
-    # top-k facts
-    top_k = np.argsort(scores)[-5:]
+    embeddings = model.encode(texts)
+    query_emb = model.encode([query])[0]
 
-    return "\n".join([FACTS[i]["content"] for i in top_k])
+    scores = np.dot(embeddings, query_emb)
+
+    top_k = np.argsort(scores)[-5:][::-1]
+
+    return "\n\n".join([texts[i] for i in top_k])

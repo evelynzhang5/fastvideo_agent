@@ -1,243 +1,247 @@
 [
-{
-"id": 1,
-"category": "setup",
-"question": "How do I install FastVideo from source?",
-"expected_keywords": ["git clone", "pip install -e ."]
-},
-{
-"id": 2,
-"category": "setup",
-"question": "How do I set up a development environment for FastVideo?",
-"expected_keywords": ["conda", "python 3.12", "pip install -e ."]
-},
-{
-"id": 3,
-"category": "setup",
-"question": "What Python and CUDA versions are required for FastVideo?",
-"expected_keywords": ["python", "cuda"]
-},
-{
-"id": 4,
-"category": "setup",
-"question": "How do I install flash-attn for FastVideo?",
-"expected_keywords": ["flash-attn", "pip install"]
-},
-{
-"id": 5,
-"category": "setup",
-"question": "Why is pre-commit not running in FastVideo?",
-"expected_keywords": ["pre-commit install"]
-},
-{
-"id": 6,
-"category": "setup",
-"question": "How do I run all tests in FastVideo?",
-"expected_keywords": ["pytest"]
-},
-{
-"id": 7,
-"category": "setup",
-"question": "What should I do after cloning FastVideo?",
-"expected_keywords": ["install", "environment"]
-},
-{
-"id": 8,
-"category": "setup",
-"question": "How do I run pre-commit on all files?",
-"expected_keywords": ["pre-commit run"]
-},
-{
-"id": 9,
-"category": "architecture",
-"question": "What is the role of pipelines in FastVideo?",
-"expected_keywords": ["pipeline", "stages"]
-},
-{
-"id": 10,
-"category": "architecture",
-"question": "What is the difference between pipelines and models?",
-"expected_keywords": ["models", "execution"]
-},
-{
-"id": 11,
-"category": "architecture",
-"question": "What are pipeline stages in FastVideo?",
-"expected_keywords": ["stage", "denoising"]
-},
-{
-"id": 12,
-"category": "architecture",
-"question": "What is FastVideoArgs used for?",
-"expected_keywords": ["configuration"]
-},
-{
-"id": 13,
-"category": "architecture",
-"question": "How does FastVideo separate model and execution logic?",
-"expected_keywords": ["modular", "pipeline"]
-},
-{
-"id": 14,
-"category": "architecture",
-"question": "What components are inside the models directory?",
-"expected_keywords": ["vae", "transformer", "encoder"]
-},
-{
-"id": 15,
-"category": "architecture",
-"question": "What does the attention module do?",
-"expected_keywords": ["attention", "backend"]
-},
-{
-"id": 16,
-"category": "architecture",
-"question": "What is the ForwardBatch object?",
-"expected_keywords": ["state", "pipeline"]
-},
-{
-"id": 17,
-"category": "architecture",
-"question": "How does FastVideo support distributed execution?",
-"expected_keywords": ["multi-gpu", "executor"]
-},
-{
-"id": 18,
-"category": "architecture",
-"question": "What is the role of the worker system?",
-"expected_keywords": ["gpu", "execution"]
-},
-{
-"id": 19,
-"category": "repo",
-"question": "Where is the Wan pipeline implemented?",
-"expected_keywords": ["pipelines/basic/wan"]
-},
-{
-"id": 20,
-"category": "repo",
-"question": "Where are transformer models implemented?",
-"expected_keywords": ["models/dits"]
-},
-{
-"id": 21,
-"category": "repo",
-"question": "Where are VAEs implemented?",
-"expected_keywords": ["models/vaes"]
-},
-{
-"id": 22,
-"category": "repo",
-"question": "Where is the VideoGenerator defined?",
-"expected_keywords": ["entrypoints"]
-},
-{
-"id": 23,
-"category": "repo",
-"question": "Where are CLI commands implemented?",
-"expected_keywords": ["entrypoints/cli"]
-},
-{
-"id": 24,
-"category": "repo",
-"question": "Where are configs stored?",
-"expected_keywords": ["configs"]
-},
-{
-"id": 25,
-"category": "repo",
-"question": "Where is attention implemented?",
-"expected_keywords": ["attention"]
-},
-{
-"id": 26,
-"category": "repo",
-"question": "Where are dataset loaders defined?",
-"expected_keywords": ["dataset"]
-},
-{
-"id": 27,
-"category": "usage",
-"question": "How do I generate a video using FastVideo?",
-"expected_keywords": ["VideoGenerator", "generate"]
-},
-{
-"id": 28,
-"category": "usage",
-"question": "What is the main API for video generation?",
-"expected_keywords": ["VideoGenerator"]
-},
-{
-"id": 29,
-"category": "usage",
-"question": "How do I load a pretrained model?",
-"expected_keywords": ["from_pretrained"]
-},
-{
-"id": 30,
-"category": "usage",
-"question": "How do I run a basic inference example?",
-"expected_keywords": ["examples"]
-},
-{
-"id": 31,
-"category": "usage",
-"question": "How do I use LoRA for inference?",
-"expected_keywords": ["lora"]
-},
-{
-"id": 32,
-"category": "usage",
-"question": "How do I run the gradio demo?",
-"expected_keywords": ["gradio"]
-},
-{
-"id": 33,
-"category": "training",
-"question": "How do I finetune a model in FastVideo?",
-"expected_keywords": ["training", "scripts"]
-},
-{
-"id": 34,
-"category": "training",
-"question": "Where are training pipelines implemented?",
-"expected_keywords": ["training"]
-},
-{
-"id": 35,
-"category": "training",
-"question": "How do I prepare dataset for training?",
-"expected_keywords": ["dataset"]
-},
-{
-"id": 36,
-"category": "training",
-"question": "What scripts are used for finetuning?",
-"expected_keywords": ["scripts"]
-},
-{
-"id": 37,
-"category": "advanced",
-"question": "How do I add a new model to FastVideo?",
-"expected_keywords": ["models", "registry", "config"]
-},
-{
-"id": 38,
-"category": "advanced",
-"question": "How does the registry system work in FastVideo?",
-"expected_keywords": ["registry"]
-},
-{
-"id": 39,
-"category": "advanced",
-"question": "How do I connect a model to a pipeline?",
-"expected_keywords": ["pipeline", "model"]
-},
-{
-"id": 40,
-"category": "advanced",
-"question": "How do I add a new pipeline?",
-"expected_keywords": ["pipeline", "stage"]
-}
+  {
+    "id": 1,
+    "category": "setup",
+    "question": "How do you install FastVideo from source?",
+    "expected_keywords": ["git clone", "repository", "uv pip install", "editable install"]
+  },
+  {
+    "id": 2,
+    "category": "setup",
+    "question": "How do you create the environment for FastVideo?",
+    "expected_keywords": ["conda", "environment", "python 3.12", "activate"]
+  },
+  {
+    "id": 3,
+    "category": "setup",
+    "question": "What are the main requirements for running FastVideo?",
+    "expected_keywords": ["python version", "cuda", "gpu", "compatibility"]
+  },
+  {
+    "id": 4,
+    "category": "setup",
+    "question": "How do you install flash-attn?",
+    "expected_keywords": ["flash-attn", "pip install", "build", "no-build-isolation"]
+  },
+  {
+    "id": 5,
+    "category": "setup",
+    "question": "What should you do if pre-commit is not running?",
+    "expected_keywords": ["pre-commit install", "hooks", "git hooks"]
+  },
+  {
+    "id": 6,
+    "category": "setup",
+    "question": "How do you run tests in FastVideo?",
+    "expected_keywords": ["pytest", "tests", "run test suite"]
+  },
+  {
+    "id": 7,
+    "category": "setup",
+    "question": "What is the first thing to do after cloning the repo?",
+    "expected_keywords": ["install dependencies", "setup environment", "pip install"]
+  },
+  {
+    "id": 8,
+    "category": "setup",
+    "question": "How do you run pre-commit checks manually?",
+    "expected_keywords": ["pre-commit run", "--all-files", "lint"]
+  },
 
+  {
+    "id": 9,
+    "category": "architecture",
+    "question": "What is the role of pipelines in FastVideo?",
+    "expected_keywords": ["pipeline", "orchestrate", "stages", "execution"]
+  },
+  {
+    "id": 10,
+    "category": "architecture",
+    "question": "How does FastVideo separate models from execution logic?",
+    "expected_keywords": ["models", "pipelines", "separation", "execution logic"]
+  },
+  {
+    "id": 11,
+    "category": "architecture",
+    "question": "What are stages in the pipeline?",
+    "expected_keywords": ["stage", "encoding", "denoising", "decoding"]
+  },
+  {
+    "id": 12,
+    "category": "architecture",
+    "question": "What is FastVideoArgs?",
+    "expected_keywords": ["FastVideoArgs", "configuration", "parameters", "control"]
+  },
+  {
+    "id": 13,
+    "category": "architecture",
+    "question": "Why is FastVideo considered modular?",
+    "expected_keywords": ["modular", "separation", "components", "independent"]
+  },
+  {
+    "id": 14,
+    "category": "architecture",
+    "question": "What are the main model components in FastVideo?",
+    "expected_keywords": ["transformer", "vae", "encoder", "models"]
+  },
+  {
+    "id": 15,
+    "category": "architecture",
+    "question": "What is the attention system in FastVideo?",
+    "expected_keywords": ["attention", "backends", "mechanism", "computation"]
+  },
+  {
+    "id": 16,
+    "category": "architecture",
+    "question": "What is ForwardBatch?",
+    "expected_keywords": ["ForwardBatch", "state", "data flow", "pipeline"]
+  },
+  {
+    "id": 17,
+    "category": "architecture",
+    "question": "How does FastVideo handle multi-GPU execution?",
+    "expected_keywords": ["multi-gpu", "distributed", "executor", "parallelism"]
+  },
+  {
+    "id": 18,
+    "category": "architecture",
+    "question": "What is the role of workers in FastVideo?",
+    "expected_keywords": ["worker", "gpu", "execution", "process"]
+  },
+
+  {
+    "id": 19,
+    "category": "repo",
+    "question": "Where are Wan pipelines implemented?",
+    "expected_keywords": ["pipelines/basic/wan", "wan pipeline", "directory"]
+  },
+  {
+    "id": 20,
+    "category": "repo",
+    "question": "Where are transformer diffusion models located?",
+    "expected_keywords": ["models/dits", "transformer", "directory"]
+  },
+  {
+    "id": 21,
+    "category": "repo",
+    "question": "Where are VAEs implemented?",
+    "expected_keywords": ["models/vaes", "vae", "directory"]
+  },
+  {
+    "id": 22,
+    "category": "repo",
+    "question": "Where is VideoGenerator implemented?",
+    "expected_keywords": ["entrypoints", "video_generator.py", "VideoGenerator"]
+  },
+  {
+    "id": 23,
+    "category": "repo",
+    "question": "Where are CLI commands located?",
+    "expected_keywords": ["entrypoints/cli", "cli", "commands"]
+  },
+  {
+    "id": 24,
+    "category": "repo",
+    "question": "Where are configuration files stored?",
+    "expected_keywords": ["configs", "configuration files", "directory"]
+  },
+  {
+    "id": 25,
+    "category": "repo",
+    "question": "Where are attention backends implemented?",
+    "expected_keywords": ["attention", "backends", "fastvideo/attention"]
+  },
+  {
+    "id": 26,
+    "category": "repo",
+    "question": "Where is dataset loading implemented?",
+    "expected_keywords": ["dataset", "dataloader", "data loading"]
+  },
+
+  {
+    "id": 27,
+    "category": "usage",
+    "question": "How do you generate a video in FastVideo?",
+    "expected_keywords": ["VideoGenerator", "generate", "inference"]
+  },
+  {
+    "id": 28,
+    "category": "usage",
+    "question": "What is the main API for inference?",
+    "expected_keywords": ["VideoGenerator", "API", "interface"]
+  },
+  {
+    "id": 29,
+    "category": "usage",
+    "question": "How do you load a pretrained model?",
+    "expected_keywords": ["from_pretrained", "load model", "weights"]
+  },
+  {
+    "id": 30,
+    "category": "usage",
+    "question": "Where can you find inference examples?",
+    "expected_keywords": ["examples", "inference", "basic"]
+  },
+  {
+    "id": 31,
+    "category": "usage",
+    "question": "How do you run LoRA inference?",
+    "expected_keywords": ["lora", "inference", "adapter"]
+  },
+  {
+    "id": 32,
+    "category": "usage",
+    "question": "How do you run the Gradio demo?",
+    "expected_keywords": ["gradio", "demo", "UI"]
+  },
+
+  {
+    "id": 33,
+    "category": "training",
+    "question": "Where are training scripts located?",
+    "expected_keywords": ["training", "finetune", "scripts"]
+  },
+  {
+    "id": 34,
+    "category": "training",
+    "question": "What is a training pipeline?",
+    "expected_keywords": ["training pipeline", "training", "pipeline"]
+  },
+  {
+    "id": 35,
+    "category": "training",
+    "question": "How do you prepare datasets for training?",
+    "expected_keywords": ["dataset", "prepare", "training data"]
+  },
+  {
+    "id": 36,
+    "category": "training",
+    "question": "Where are finetuning scripts?",
+    "expected_keywords": ["scripts", "finetune", "training"]
+  },
+
+  {
+    "id": 37,
+    "category": "advanced",
+    "question": "How do you add a new model?",
+    "expected_keywords": ["models", "registry", "config", "register"]
+  },
+  {
+    "id": 38,
+    "category": "advanced",
+    "question": "What is the registry system?",
+    "expected_keywords": ["registry", "mapping", "components"]
+  },
+  {
+    "id": 39,
+    "category": "advanced",
+    "question": "How does pipeline connect models?",
+    "expected_keywords": ["pipeline", "model", "connect", "stages"]
+  },
+  {
+    "id": 40,
+    "category": "advanced",
+    "question": "How do you add a new stage?",
+    "expected_keywords": ["pipeline", "stage", "add", "implementation"]
+  }
 ]

@@ -11,11 +11,10 @@ for q in questions:
     response = run_agent(q["question"])
 
     success = False
+    keywords = q["expected_keywords"]
+    match_count = sum(k in response.lower() for k in keywords)
 
-    for keyword in q["expected_keywords"]:
-        if keyword.lower() in response.lower():
-            success = True
-
+    success = match_count >= max(1, int(0.6 * len(keywords)))
     if success:
         correct += 1
 
