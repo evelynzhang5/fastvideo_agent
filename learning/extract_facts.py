@@ -199,12 +199,25 @@ def extract_python_info(file_path: str):
 # =========================
 # HEURISTICS
 # =========================
-
 def guess_file_purpose(file_path: str) -> str:
     name = file_path.lower()
 
     if "pipeline" in name:
         return "defines pipeline logic and stage orchestration"
+    if "workflow" in name:
+        return "defines workflow orchestration and execution flow"
+    if "config" in name:
+        return "defines configuration objects and CLI/config parsing"
+    if "registry" in name:
+        return "registers and resolves models, pipelines, or components"
+    if "logger" in name or "logging" in name:
+        return "handles logging and runtime diagnostics"
+    if "env" in name or "platform" in name:
+        return "handles runtime environment or platform-specific behavior"
+    if "hook" in name:
+        return "defines hooks for modifying module behavior at runtime"
+    if "layer" in name or "/layers/" in name:
+        return "implements reusable neural network layers or tensor ops"
     if "denoising" in name:
         return "implements diffusion denoising step"
     if "encoding" in name or "encoder" in name:
@@ -223,24 +236,19 @@ def guess_file_purpose(file_path: str) -> str:
         return "implements model architecture"
     if "entrypoints" in name or "entrypoint" in name:
         return "defines entrypoint APIs for inference or orchestration"
-    if "trainer" in name or "training" in name:
+    if "trainer" in name or "training" in name or "/train/" in name:
         return "implements model training logic"
     if "inference" in name:
         return "implements inference-time execution"
     return "general utility or module"
 
-
 def infer_tags(file_path: str) -> List[str]:
     lower = file_path.lower()
     tags = []
 
-    if "/train/" in lower or "/training/" in lower or "trainer" in lower:
-        tags.append("training")
-
-    if "/entrypoint/" in lower or "/entrypoints/" in lower:
-        tags.append("entrypoint")
-
     tag_rules = {
+        "training": ["/train/", "/training/", "trainer", "callback", "optimizer"],
+        "entrypoint": ["/entrypoint/", "/entrypoints/"],
         "pipeline": ["pipeline", "pipelines"],
         "model": ["model", "models", "dit", "dits"],
         "vae": ["vae"],
@@ -251,6 +259,13 @@ def infer_tags(file_path: str) -> List[str]:
         "dataset": ["dataset", "dataloader"],
         "inference": ["inference"],
         "denoising": ["denoising"],
+        "workflow": ["workflow"],
+        "config": ["config", "configs"],
+        "registry": ["registry"],
+        "logging": ["logger", "logging"],
+        "platform": ["platform", "env", "envs"],
+        "hook": ["hook", "hooks"],
+        "layer": ["/layers/", "layernorm", "embedding", "mlp", "rotary"],
     }
 
     for tag, keywords in tag_rules.items():
@@ -259,7 +274,6 @@ def infer_tags(file_path: str) -> List[str]:
                 tags.append(tag)
 
     return tags
-
 
 # =========================
 # SUMMARIZATION
