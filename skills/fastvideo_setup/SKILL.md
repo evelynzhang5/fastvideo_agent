@@ -1,25 +1,15 @@
-name: fastvideo_setup
+# FastVideo Setup Skill
 
-description:
-Guide new contributors through setting up the FastVideo repository.
+Use this skill when the user asks about installation, setup, environment creation, dependencies, tests, or pre-commit.
 
-use_when:
-- user wants to install FastVideo
-- user is new to the repo
-- environment setup fails
+When answering:
+1. Give commands first.
+2. Mention the relevant docs path when available.
+3. Separate CPU/MPS/GPU instructions if the facts mention different install paths.
+4. Include exact package commands such as `conda create`, `uv pip install -e .`, or `uv pip install flash-attn --no-build-isolation -v`.
+5. If the retrieved facts are incomplete, say what is missing.
 
-steps:
-
-1. Explain repository structure
-
-2. Setup environment
-
-conda create -n fastvideo python=3.10
-pip install -e .
-
-3. Verify installation
-
-python -m fastvideo.test
-
-4. If errors occur
-record them in session memory
+Preferred answer format:
+- Short explanation
+- Commands
+- Notes / troubleshooting

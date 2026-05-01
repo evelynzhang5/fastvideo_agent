@@ -1,6 +1,14 @@
 [
   {
     "name": "fastvideo_setup",
-    "description": "setup FastVideo environment"
+    "description": "Installation, setup, environment creation, dependencies, flash-attn, tests, pre-commit, and running FastVideo from source."
+  },
+  {
+    "name": "repo_navigation",
+    "description": "Repository structure, file locations, implementation locations, architecture, modules, classes, functions, and where code lives."
+  },
+  {
+    "name": "continual_learning",
+    "description": "Memory extraction, fact generation, evaluation, retrieval, RAG, updating facts, and improving the onboarding agent."
   }
 ]

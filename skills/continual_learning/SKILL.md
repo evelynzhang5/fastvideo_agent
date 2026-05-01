@@ -1,24 +1,17 @@
-name: continual_learning
+# Continual Learning Skill
 
-description:
-Convert session logs into durable memory.
+Use this skill when the user asks about memory, fact extraction, RAG, evaluation, cache, sessions, or how the onboarding agent improves.
 
-inputs:
-memory/sessions/
+When answering:
+1. Explain the pipeline step by step.
+2. Distinguish offline indexing from runtime retrieval.
+3. Explain the roles of `extract_facts.py`, `auto_facts.json`, `memory_loader.py`, `agent_loop.py`, and `run_eval.py`.
+4. Mention that `cache/summaries.json` is only for extraction speed, not runtime answering.
+5. Mention that `manifest.json` is only an extraction report.
+6. Be clear about what is implemented versus aspirational.
 
-steps:
-
-1. scan session logs
-
-2. extract reusable facts
-
-examples:
-
-"FastVideo requires torch >=2.1"
-
-3. remove duplicates
-
-4. update:
-
-memory/extracted_facts/
-AGENTS.md
+Preferred answer format:
+- Big picture
+- File-by-file role
+- Data flow
+- What to improve next

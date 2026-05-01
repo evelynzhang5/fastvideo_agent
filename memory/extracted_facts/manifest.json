@@ -1,0 +1,40 @@
+{
+  "summary_version": "v4_1_precise_tags",
+  "repo_root": "/Users/evelynzhang/Documents/GitHub/fastvideo_agent/FastVideo",
+  "num_facts": 6366,
+  "num_scanned_files": 738,
+  "num_skipped_files": 43,
+  "facts_by_type": {
+    "class": 1073,
+    "config": 64,
+    "curated_checklist": 1,
+    "doc": 407,
+    "function": 1660,
+    "method": 2604,
+    "module": 557
+  },
+  "facts_by_tag": {
+    "attention": 1581,
+    "checkpointing": 248,
+    "comfyui": 58,
+    "config": 1900,
+    "dataset": 329,
+    "distributed": 577,
+    "dit": 1,
+    "docs": 433,
+    "example": 254,
+    "inference": 850,
+    "kernel": 176,
+    "logging": 1329,
+    "model": 2987,
+    "new_model_support": 1,
+    "pipeline": 1123,
+    "platform": 1603,
+    "review_checklist": 1,
+    "testing": 492,
+    "text_encoder": 1,
+    "training": 1125,
+    "vae": 939,
+    "video": 958
+  }
+}

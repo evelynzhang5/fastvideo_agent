@@ -1,96 +1,61 @@
-# from core.skill_matcher import match_skill
-# from core.memory_loader import load_memory
-# from openai import OpenAI
-
-# client = OpenAI()   # requires OPENAI_API_KEY
-
-
-# def run(task):
-
-#     # 1. retrieve memory (RAG)
-#     memory = load_memory(task)
-
-#     # 2. match skill (even if not used yet — important for future)
-#     skill = match_skill(task)
-
-#     # 3. build structured prompt (VERY IMPORTANT 🔥)
-#     prompt = f"""
-# You are an expert FastVideo developer assistant.
-
-# Your job:
-# - Help users understand FastVideo codebase, setup, and workflows
-# - Give actionable, precise answers
-# - Reference relevant modules/files when possible
-
-# ----------------------
-# RELEVANT KNOWLEDGE:
-# {memory}
-# ----------------------
-
-# AVAILABLE SKILL:
-# {skill}
-# ----------------------
-
-# INSTRUCTIONS:
-# - Use the knowledge above to answer the question
-# - If relevant, mention file paths or components
-# - Be concise but informative
-# - If unsure, say what is missing
-
-# QUESTION:
-# {task}
-# """
-
-#     # 4. call LLM
-#     response = client.chat.completions.create(
-#         model="gpt-4o-mini",
-#         messages=[
-#             {
-#                 "role": "system",
-#                 "content": "You are a senior AI engineer specializing in FastVideo and large ML systems."
-#             },
-#             {
-#                 "role": "user",
-#                 "content": prompt
-#             }
-#         ]
-#     )
-
-#     answer = response.choices[0].message.content
-
-#     # 5. debugging (SUPER useful for eval)
-#     print("\n--- DEBUG ---")
-#     print("Task:", task)
-#     print("Skill:", skill)
-#     print("Retrieved memory:\n", memory[:500])
-#     print("---------------\n")
-
-#     return answer
-from ollama import chat
 from core.memory_loader import load_memory
 from core.skill_matcher import match_skill
+import ollama
 
 
-def run(task):
-    memory = load_memory(task)
+MODEL_NAME = "llama3"
+
+
+def run(task: str) -> str:
+    """
+    Main agent loop:
+    1. Retrieve relevant repo memory
+    2. Match a skill
+    3. Build a grounded prompt
+    4. Ask local Ollama model
+    5. Return answer
+    """
+
+    memory = load_memory(task, top_k=8)
     skill = match_skill(task)
 
     prompt = f"""
-You are a FastVideo expert.
+    You are an onboarding assistant for the FastVideo repository.
 
-Knowledge:
-{memory}
+    Use the retrieved repository facts below to answer the user's question.
+    Answer directly and concretely.
+    Prefer exact file paths, class names, function names, method names, command names, and source-level details.
+    If the question asks "what is X", define X first, then give where it is implemented and how it is used.
+    If the question asks "how do you", give the command or steps first.
+    If the retrieved facts do not contain enough information, say what is missing instead of guessing.
 
-Skill:
-{skill}
+    Matched skill:
+    {skill["name"]}
 
-Question:
-{task}
+    Skill instructions:
+    {skill["content"] or "No special skill instructions matched."}
+
+    Retrieved repository facts:
+    {memory}
+
+    User question:
+    {task}
+
+Answer:
 """
 
-    response = chat(
-        model="llama3",
-        messages=[{"role": "user", "content": prompt}]
+    response = ollama.chat(
+        model=MODEL_NAME,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
     )
 
     return response["message"]["content"]
+
+
+if __name__ == "__main__":
+    print(run("What does FastVideo do?"))
